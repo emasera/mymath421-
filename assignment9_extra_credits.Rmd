@@ -35,8 +35,8 @@ How effective is the covid vaccines? There are multiple analysis to answer the q
   - Data 2: https://covid19.who.int/who-data/vaccination-data.csv
 ```{r}
 library(dplyr)
-df1 <- read_csv('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv')
-df2 <- read_csv('https://covid19.who.int/who-data/vaccination-data.csv')
+df1 <- read.csv('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.csv')
+df2 <- read.csv('vaccination-data.csv')
 ```
 
 
@@ -51,7 +51,7 @@ colnames(df2)[colnames(df2) == "DATE_UPDATED"] = "date"
 
 3. In dataset 2 and variable `Country` change `United States of America` to `United States` (You can use `str_replace`)
 ```{r}
-df2$COUNTRY[df2$COUNTRY == 'United States of America'] <- 'United States'
+#df2$Country[df2$Country == 'United States of America'] <- 'United States'
 df2
 ```
 
