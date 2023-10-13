@@ -400,7 +400,7 @@ colnames(df2)[colnames(df2) == &quot;DATE_UPDATED&quot;] = &quot;date&quot;</cod
 <code>United States of America</code> to <code>United States</code> (You
 can use <code>str_replace</code>)</li>
 </ol>
-<pre class="r"><code>#df2$Country[df2$Country == &#39;United States of America&#39;] &lt;- &#39;United States&#39;
+<pre class="r"><code>df2$Country[df2$Country == &#39;United States of America&#39;] &lt;- &#39;United States&#39;
 df2</code></pre>
 <pre><code>##                                            Country ISO3 WHO_REGION DATA_SOURCE
 ## 1                                          Albania  ALB       EURO   REPORTING
@@ -539,7 +539,7 @@ df2</code></pre>
 ## 134                                   South Africa  ZAF       AFRO   REPORTING
 ## 135                                      Sri Lanka  LKA      SEARO   REPORTING
 ## 136                           United Arab Emirates  ARE       EMRO   REPORTING
-## 137                       United States of America  USA       AMRO   REPORTING
+## 137                                  United States  USA       AMRO   REPORTING
 ## 138                                     Uzbekistan  UZB       EURO   REPORTING
 ## 139                              Wallis and Futuna  WLF       WPRO   REPORTING
 ## 140                                  New Caledonia  NCL       WPRO   REPORTING
