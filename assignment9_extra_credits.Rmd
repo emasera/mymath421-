@@ -51,7 +51,7 @@ colnames(df2)[colnames(df2) == "DATE_UPDATED"] = "date"
 
 3. In dataset 2 and variable `Country` change `United States of America` to `United States` (You can use `str_replace`)
 ```{r}
-#df2$Country[df2$Country == 'United States of America'] <- 'United States'
+df2$Country[df2$Country == 'United States of America'] <- 'United States'
 df2
 ```
 
