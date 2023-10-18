@@ -49,6 +49,7 @@ pred <- predict(forest_ranger, df_test)
 cm <- confusionMatrix(data = pred, reference = df_test$target)
 cm$overall[1]
 plot(forest_ranger)
+print(forest_ranger)
 ```
 
 2. Use the `PimaIndiansDiabetes` dataset. Go to https://topepo.github.io/caret/available-models.html and pick a classification model.  Tune the classification model using cross-validation of 7 folds. 
