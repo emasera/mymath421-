@@ -445,6 +445,7 @@ cm$overall[1]
 
 7. Write a paragraph to summarize the section and give your comments on the results. 
 
+
 From this section on predictive models, I learned a lot. I feel as though there were so many different binary variables that I could have created and gone through problems 1-5 with to get to a conclusion. For the first set of models predicting whether the total charge for a patient was above or below the median total charge resulted in very strong models. The ranger had approximately 76% accuracy with the test data. For the second model, the ranger was with approximately 70% accuracy. I used libraries such as rattle, rpart and caret to made conclusions.
 
 
