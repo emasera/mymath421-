@@ -1,0 +1,73 @@
+---
+title: "Midterm Presentation"
+author: "Emily Masera"
+date: "2023-10-27"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Visualizations: 1
+
+![](plot1.png){width="80%"}
+
+## Visualizations: 2
+
+![](plot2.png){width="80%"}
+
+## Visualizations: 3
+
+![](plot3.png){width="80%"}
+
+## Visualizations: 4
+
+![](plot4.png){width="80%"}
+
+## Visualizations: 5
+
+![](plot5.png){width="80%"}
+
+## Visualizations: 6
+
+![](plot6.png){width="80%"}
+
+## Visualizations: 7
+
+![](plot7.png){width="80%"}
+
+## Visualizations: 8
+
+![](plot8.png){width="80%"}
+
+## Visualizations: 9
+
+![](plot9.png){width="80%"}
+
+## Visualizations: 10
+
+![](plot10.png){width="80%"}
+
+## Visualizations: GIF
+
+![](plot11.gif){width="80%"}
+
+## Part 3 Question 4 Model Comparison
+![](plot13.png){width="80%"}
+
+## Part 3 Question 5 Accuracy Comparison
+![](plot15.png){width="80%"}
+![](plot16.png){width="80%"}
+
+
+## Part 3 Question 6 New Model Comparison
+![](plot14.png){width="80%"}
+
+## Overall Errors and Challenges
+
+1. The file was extremely large so knitting took a while until I figured out how to change it to a csv
+
+2. Keeping track of all the df's that I made and not getting any of the variables confused within each 
+

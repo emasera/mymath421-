@@ -378,6 +378,7 @@ plot(forest_ranger)
 results <- resamples(list('Decision Tree' = tree_approach2,'Random Forest' = forest_ranger))
 
 bwplot(results)
+
 ```
 
 5. What is your final selection for the model? Test the accuracy of your final model on the test data. 
