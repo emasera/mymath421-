@@ -19,5 +19,6 @@
 - [Assignment 9 Extra Credit](assignment9_extra_credits.html)
 - [Assignment 11](assignment11.html)
 - [Assignment 12](assignment12.html)
+- [Midterm Tab](midtermtab.html)
 
 
