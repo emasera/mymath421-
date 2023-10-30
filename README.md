@@ -20,7 +20,7 @@
 - [Assignment 11](assignment11.html)
 - [Assignment 12](assignment12.html)
 - [Midterm Tab](midtermtab.html)
-- [Midterm Presentation](presentation for midterm.html)
+- [Midterm Presentation](presentationformidterm.html)
 
 
 
