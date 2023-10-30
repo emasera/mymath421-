@@ -204,7 +204,7 @@ df %>%
 
 17. Write a paragraph to summarize the section and give your comments on the results. You could do some other calculations to support your points. 
 
-### October tells to be the month that most people are admitted. The admitted people tend to be older and are females. However, older people tend to be admitted more in January. Summer has the longest length of stay and Bradley (provider 7215) has the highest charge of all providers.I used functions such as 'filter', 'group_by', 'summarise' and 'arrange' to come to all of these conclusions. I feel as though this dataset has so many other possible opportunties to use other functions within R to calculate statistics.###
+October tells to be the month that most people are admitted. The admitted people tend to be older and are females. However, older people tend to be admitted more in January. Summer has the longest length of stay and Bradley (provider 7215) has the highest charge of all providers.I used functions such as 'filter', 'group_by', 'summarise' and 'arrange' to come to all of these conclusions. I feel as though this dataset has so many other possible opportunties to use other functions within R to calculate statistics.
 
 -------
 
@@ -287,7 +287,7 @@ df %>% ggplot()+
 
 3. Write a paragraph to summarize the section and give your comments on the results. 
 
-### From these 11 graphs, I used geom_bar, ggplot, geom_col, and other coding techniques we learned in class to summarize some of the data. A few things I took away from these graphs were that younger people of both male and female genders tend to stay longer in the hospital than older people, it is most common for people in their 60s to be admitted than any other age range, females are more commonly admitted and most higher charges occur in very young patients or middle aged maled. There is endless amounts of graphs possible to make for this dataset but these were some of my key takeaways on the ones that I coded ###
+From these 11 graphs, I used geom_bar, ggplot, geom_col, and other coding techniques we learned in class to summarize some of the data. A few things I took away from these graphs were that younger people of both male and female genders tend to stay longer in the hospital than older people, it is most common for people in their 60s to be admitted than any other age range, females are more commonly admitted and most higher charges occur in very young patients or middle aged maled. There is endless amounts of graphs possible to make for this dataset but these were some of my key takeaways on the ones that I coded
 
 -------
 
@@ -444,5 +444,5 @@ cm$overall[1]
 
 7. Write a paragraph to summarize the section and give your comments on the results. 
 
-### From this section on predictive models, I learned a lot. I feel as though there were so many different binary variables that I could have created and gone through problems 1-5 with to get to a conclusion. For the first set of models predicting whether the total charge for a patient was above or below the median total charge resulted in very strong models. The ranger had approximately 76% accuracy with the test data. For the second model, the ranger was with approximately 70% accuracy. I used libraries such as rattle, rpart and caret to made conclusions.###
+*From this section on predictive models, I learned a lot. I feel as though there were so many different binary variables that I could have created and gone through problems 1-5 with to get to a conclusion. For the first set of models predicting whether the total charge for a patient was above or below the median total charge resulted in very strong models. The ranger had approximately 76% accuracy with the test data. For the second model, the ranger was with approximately 70% accuracy. I used libraries such as rattle, rpart and caret to made conclusions.*
 -------
