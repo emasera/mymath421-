@@ -85,11 +85,11 @@ The central limit theorem says that the sample means of any distribution follows
 Redo the above steps for the distribution of the number of values getting when rolling a die. [Hint: Use `sample(1, 6, n, replace = TRUE)` to generate samples from rolling a die]
 ```{r}
 library(lattice)
-n = 1000
-z <-sample(6, n, replace = TRUE)
-mean(z)
-histogram(z)
-
+n = 1000000
+z <- sample(6, n, replace = TRUE)
+z1 <- matrix(z, nrow=1000)
+z2 <- rowMeans(z1)
+histogram(z2)
 
 ```
 
