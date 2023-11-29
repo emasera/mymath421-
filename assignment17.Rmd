@@ -57,6 +57,18 @@ Do the follows.
 
 - Simulate data for the following model and use linear model to recover the coefficients. How well the linear model fits the data?
 
+```{r}
+n = 1000
+x1 = runif(n = n, 0, 10)
+x2 = runif(n = n, 0, 10)
+e = rnorm(n=100, mean = 0, sd = 2)
+y= 2 + 3*x1 + 4*x2 + e
+lm(y~x1)
+lm(y~x2)
+
+#The coefficients that they simulated are extremely close to the correct 3 and 4 coefficients in the problem. That means that the linear model is fitting the data accurately and extremely well.#
+```
+
 $$
 y = 2 + 3 x_1 + 4x_2 + \epsilon
 $$
@@ -71,6 +83,15 @@ The central limit theorem says that the sample means of any distribution follows
 - Plot the histogram of the means and verify that the histogram shows the normal distribution of the means. 
 
 Redo the above steps for the distribution of the number of values getting when rolling a die. [Hint: Use `sample(1, 6, n, replace = TRUE)` to generate samples from rolling a die]
+```{r}
+library(lattice)
+n = 1000
+z <-sample(6, n, replace = TRUE)
+mean(z)
+histogram(z)
+
+
+```
 
 ### 3. (Monte Carlo Methods) Estimating Pi
 
@@ -79,8 +100,24 @@ Redo the above steps for the distribution of the number of values getting when r
 Do the following to estimate $\pi$
 
 - Generating n = 1000 values of $x$ from -1 to 1 using `runif`
+```{r}
+n = 1000
+x = runif(n = n, -1, 1)
+t <- x
+```
+
 
 - Generating n = 1000 values of $y$ from -1 to 1 using `runif`
+```{r}
+n = 1000
+y = runif(n = n, -1, 1)
+s <- y
+```
+
+- Counting the number of points $(x,y)$ within the circle by counting the number of points such that $x^2 + y^2 \leq 1$. 
+```{r}
+z <- sum(s^2+t^2 < 1) +  sum(s^2+t^2 == 1)
+```
 
 - We have the area of a circle is calculated by $A_1 = \pi r^2$, and the area of the bounding square is $A_2 = 4r^2$. We have
 
@@ -88,10 +125,22 @@ $$
 \frac{\pi}{4} = \frac{\pi r^2}{4r^2} = \frac{A_1}{A_2} = \frac{\text{Number of Points within the circle}}{\text{Total Number of Points}}
 $$
 
-- Counting the number of points $(x,y)$ within the circle by counting the number of points such that $x^2 + y^2 \leq 1$. 
-
 - Estimating $\pi$ from the above equation.
+```{r}
+4*(z/1000)
+```
 
 - Increase the value of $n$ for more accurate estimation for $\pi$.
+```{r}
+n = 10000000
+x = runif(n = n, -1, 1)
+t <- x
+n = 10000000
+y = runif(n = n, -1, 1)
+s <- y
+z <- sum(s^2+t^2 < 1) +  sum(s^2+t^2 == 1)
+4*(z/10000000)
+
+```
 
 
