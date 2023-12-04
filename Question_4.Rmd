@@ -29,7 +29,7 @@ adultcensus_sex <- unique(df$sex)
 {.sidebar}
 =======================================================================
 
-The sinking of the Titanic is one of the most infamous shipwrecks in history. While there was some element of luck involved in surviving, it seems some groups of people were more likely to survive than others.  Select the input for the plots. 
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income. 
 
 ```{r}
 selectInput(inputId = "sex_input",
