@@ -19,7 +19,7 @@ title: "Final Project - Building Interactive Dashboard"
 
 -   Create an empty dashboard. In Rstudio, File -\> New File -\> R Markdown -\> From Template -\> Flex Dashboard. Knit the rmarkdown file and add the html link to this report.
 
-[Question 1](Question1.html)
+[Question 1](Question_1.html)
 
 
 ### Question 2.
@@ -36,7 +36,7 @@ Use this template flex dashboard ([dashboard](https://bryantstats.github.io/math
 
 Include the link of the dashboard here. 
 
-[Question 2](Question2.html)
+[Question 2](Question_2.html)
 
 ### Question 3.
 
