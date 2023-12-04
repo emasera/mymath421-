@@ -1,0 +1,73 @@
+---
+title: "Adult Census"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    logo: image1.png
+    source_code: embed
+    social: menu
+
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(DT)
+library(shiny)
+library(packrat)
+library(rsconnect)
+df <- read.csv('C:/Users/student/Desktop/2023-2024/Fall Semester/Statistical Analysis with R/mymath421-/adult_census.csv')
+
+adultcensus_sex <- unique(df$Sex)
+```
+
+
+{.sidebar}
+=======================================================================
+
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income. 
+
+```{r}
+selectInput(inputId = "sex_input",
+            label = h3("Select Gender"),
+            choice = adultcensus_sex,
+            selected = 'Male')
+```
+
+
+Main Tab 1
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p4 <- df %>% 
+    filter(sex==input$sex_input) %>% 
+    ggplot(aes(x=age, color=race))+
+    geom_density()
+  ggplotly(p4)
+})
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Bar Plot
+
+```{r}
+renderPlotly({
+  p5 <- df %>% 
+    filter(sex==input$sex_input) %>% 
+    ggplot(aes(x=race, fill=marital.status))+
+    geom_bar()
+  ggplotly(p5)
+})
+```

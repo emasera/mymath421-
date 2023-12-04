@@ -33,4 +33,6 @@
 ### Final
 - [Question1](Question_1.html)
 - [Question2](Question_2.html)
+- [Question3](https://emasera.shinyapps.io/question_3/)
+- [Question4](https://emasera.shinyapps.io/Question_4/)
 - [Final](final.html)
