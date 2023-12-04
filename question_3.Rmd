@@ -1,6 +1,6 @@
 
 ---
-title: "Adult Census"
+title: "Titanic"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
