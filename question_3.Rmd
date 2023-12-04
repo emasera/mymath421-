@@ -1,11 +1,11 @@
 
 ---
-title: "Titanic - SelectInput"
+title: "Adult Census"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
-    logo: logo.png
+    logo: image1.png
     source_code: embed
     social: menu
 
