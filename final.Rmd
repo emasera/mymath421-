@@ -75,7 +75,7 @@ rsconnect::setAccountInfo(name='emasera',
 
     <https://sn904109.shinyapps.io/1_flex_select/>
     
-[Question3](https://emasera.shinyapps.io/question_3/)]
+[Question3](https://emasera.shinyapps.io/question_3/)], [Rmd](final.Rmd)
 
 ### Question 4 - selectInput
 
@@ -87,7 +87,7 @@ Note: In the above dashboard, click to Source Code to show the codes.
 
 Include the link of your dashboard here.
 
-[Question4](https://emasera.shinyapps.io/Question_4/)
+[Question4](https://emasera.shinyapps.io/Question_4/), [Rmd](final.Rmd)
 
 ### Question 5 - checkboxGroupInput
 
