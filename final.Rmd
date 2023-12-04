@@ -77,7 +77,6 @@ rsconnect::setAccountInfo(name='emasera',
     
 #https://emasera.shinyapps.io/question_3/
 
-[Question 3](Question_3.html)
 
 ### Question 4 - selectInput
 
