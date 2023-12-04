@@ -1,0 +1,139 @@
+
+
+---
+title: "Adult Census"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    logo: image1.png
+    source_code: embed
+    social: menu
+---
+
+```{r setup}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(DT)
+df <- read.csv('adult_census.csv')
+
+# Create a ggplot object
+p <- df %>% 
+  ggplot()+ 
+  geom_bar(mapping=aes(x=age, fill=marital.status), 
+           position = 'fill')+
+  labs(y='Age', fill='Relationship Status')
+
+p1 <- df %>% 
+  ggplot()+ 
+  geom_bar(mapping=aes(x=sex, color=marital.status),
+           position = 'dodge')+
+  labs(y='Count', x='Sex', fill='Relationship Status')
+
+p2 <- df %>% 
+  ggplot()+ 
+  geom_bar(mapping=aes(x=race, color=marital.status),
+           position = 'dodge')+
+  labs(y='Count', x='Race', fill='Relationship Status')
+
+p3 <- df %>% 
+  ggplot()+ 
+  geom_bar(mapping=aes(x=income, color=marital.status),
+           position = 'fill')+
+  labs(y='Proportion', x='Income', fill='Relationship Status')
+
+```
+
+{.sidebar}
+=======================================================================
+
+### 1. Adult Census
+
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income. 
+
+
+Main Tab 1
+=======================================================================
+
+Column {data-width=500, .tabset}
+-----------------------------------------------------------------------
+
+### Column Tab 1
+
+```{r}
+df
+```
+
+
+### Column Tab 2
+
+```{r}
+datatable(df, options = list(
+  pageLength = 25
+))
+```
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Plot 1
+
+```{r}
+p
+```
+
+
+Main Tab 2
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+#### 1. Plot 2 and 3
+
+
+Plot 2 represents the count divided by sex of the adults in the census divided based on their marital status. For females, the highest count is for never married whereas for males the highest count is for married-civ-spouse which represents a civilian spouse. For females the second highest was divorced but for males it was never married as a close count with the females that were never married.
+
+Plot 3 represents the count divided by race of the adults in the census divided based on their marital status. For example, the highest count for white people married to a civilian with a second being never married. For black people, the highest count was for never married. The rest of the data has an extremely small count for every marital status by race. 
+
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Plot 2
+
+```{r}
+p1
+```
+
+### Plot 3
+
+```{r}
+p2
+```
+
+
+Main Tab 3
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+#### 1. Plot 4
+
+Plot 4 represents splitting the data based on income being less than $50k or greater than $50k and determining the proportion for each group based on marital status. The biggest take away is that for people with an income less than $50k, the majority are not married at about 30%. For the people who had an income of greater than $50k, the majority were married with an absent spouse at about 70%. 
+
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Plot 4
+
+```{r}
+p3
+```
