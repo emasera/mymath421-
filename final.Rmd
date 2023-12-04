@@ -59,6 +59,11 @@ rsconnect::setAccountInfo(name='fall20',
 ```
 
 -   Paste the secret code into Rstudio Console and Run it.
+```{r}
+rsconnect::setAccountInfo(name='emasera',
+			  token='28C9CF90D7696E33289226E31B4D8429',
+			  secret='9b0H0u53KGadHGfEI3EY/N4O0OHzOgQzwfJncq1E')
+```
 
 -   Download a sample shiny flex dashboard: [Dashboard](https://sn904109.shinyapps.io/1_flex_select/), [Rmd](https://bryantstats.github.io/math421/final/1_flex_select.Rmd)
 
@@ -69,6 +74,10 @@ rsconnect::setAccountInfo(name='fall20',
 -   Your published dashboard should look like this
 
     <https://sn904109.shinyapps.io/1_flex_select/>
+    
+#https://emasera.shinyapps.io/question_3/
+
+[Question 3](Question_3.html)
 
 ### Question 4 - selectInput
 
