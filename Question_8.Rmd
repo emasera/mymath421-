@@ -1,0 +1,78 @@
+
+---
+title: "Adult Census"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    logo: image1.png
+    source_code: embed
+    social: menu
+
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(DT)
+library(shiny)
+library(packrat)
+library(rsconnect)
+library(cleaner)
+df <- read_csv('https://bryantstats.github.io/math421/data/adult_census.csv')
+
+df$date <- rdate(nrow(df), min = "2022-01-01",
+                 max = paste0(format(Sys.Date(), "%Y"), "-12-31"))
+
+```
+
+{.sidebar}
+=======================================================================
+
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income.
+The date data is not real, it is generated randomly through an R function.
+
+```{r}
+dateRangeInput(inputId = "date_input", 
+               label = h2("date range"), 
+               start = min(df$date), 
+               end = max(df$date),
+               min = min(df$date), 
+               max = max(df$date))
+```
+
+Main Tab 1
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p1 <- df %>% 
+    filter(date > input$date_input[1], date < input$date_input[2]) %>% 
+    ggplot(aes(x=age, color=sex))+
+    geom_density()
+  ggplotly(p1)
+})
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Bar Plot
+
+```{r}
+renderPlotly({
+  p2 <- df %>% 
+    filter(date > input$date_input[1], date < input$date_input[2]) %>% 
+    ggplot(aes(x=education, fill=workclass))+
+    geom_bar()
+  ggplotly(p2)
+})
+```

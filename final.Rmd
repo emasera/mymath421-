@@ -63,6 +63,8 @@ rsconnect::setAccountInfo(name='fall20',
 rsconnect::setAccountInfo(name='emasera',
 			  token='28C9CF90D7696E33289226E31B4D8429',
 			  secret='9b0H0u53KGadHGfEI3EY/N4O0OHzOgQzwfJncq1E')
+
+rsconnect::setAccountInfo(name='emasera1', token='0FE2C52B0B26F0C67FFDAD34E3080C31', secret='fZUojr5pPx5yiQpb6qZcuSut+vFs5PxFt1x8dhTx')
 ```
 
 -   Download a sample shiny flex dashboard: [Dashboard](https://sn904109.shinyapps.io/1_flex_select/), [Rmd](https://bryantstats.github.io/math421/final/1_flex_select.Rmd)
@@ -134,6 +136,8 @@ Write a shiny flex dashboard that uses `dateRangeInput` and works with a dataset
 [Similar dashboard](https://sn904109.shinyapps.io/5_flex_date_range/), [Rmd](5_flex_date_range.Rmd)
 
 Include the link of your dashboard here.
+
+[Question8](https://emasera1.shinyapps.io/Question_8/), [Rmd](final.Rmd)
 
 ### Question 9 - Combination of Inputs
 
