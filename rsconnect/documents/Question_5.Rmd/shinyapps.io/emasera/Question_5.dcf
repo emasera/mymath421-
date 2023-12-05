@@ -1,0 +1,12 @@
+name: Question_5
+title: Question_5
+username: emasera
+account: emasera
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10716982
+bundleId: 8007641
+url: https://emasera.shinyapps.io/Question_5/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
