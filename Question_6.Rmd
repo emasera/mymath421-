@@ -1,0 +1,75 @@
+
+---
+title: "Adult Census"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    logo: image1.png
+    source_code: embed
+    social: menu
+
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(DT)
+library(shiny)
+library(packrat)
+library(rsconnect)
+df <- read_csv('https://bryantstats.github.io/math421/data/adult_census.csv')
+
+adultcensus_sex <- unique(df$sex)
+```
+
+{.sidebar}
+=======================================================================
+
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income.
+
+
+```{r}
+sliderInput(inputId = "hpw_input",
+            label = h2("Select Hours per week range"),
+            min = min(df$hours.per.week, na.rm=TRUE),
+            max = max(df$hours.per.week, na.rm=TRUE),
+            value= c(1, 99))
+
+```
+
+Main Tab 1
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p8 <- df %>% 
+    filter(hours.per.week>input$hpw_input[1], hours.per.week<input$hpw_input[2]) %>% 
+    ggplot(aes(x=age, color=income))+
+    geom_density()
+  ggplotly(p8)
+})
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Bar Plot
+
+```{r}
+renderPlotly({
+  p9 <- df %>% 
+    filter(hours.per.week>input$hpw_input[1], hours.per.week<input$hpw_input[2]) %>% 
+    ggplot(aes(x=education, fill=race))+
+    geom_bar()
+  ggplotly(p9)
+})
+```
