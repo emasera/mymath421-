@@ -36,4 +36,5 @@
 - [Question4](https://emasera.shinyapps.io/Question_4/)
 - [Question5](https://emasera.shinyapps.io/Question_5/)
 - [Question6](https://emasera.shinyapps.io/Question_6/)
+- [Question7](https://emasera.shinyapps.io/Question_7/)
 - [Final](final.html)

@@ -1,0 +1,76 @@
+
+---
+title: "Adult Census"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    logo: image1.png
+    source_code: embed
+    social: menu
+
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+# load data in 'global' chunk so it can be shared by all users of the dashboard
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(DT)
+library(shiny)
+library(packrat)
+library(rsconnect)
+df <- read_csv('https://bryantstats.github.io/math421/data/adult_census.csv')
+
+
+maritalstatus_sex <- unique(df$marital.status)
+```
+
+{.sidebar}
+=======================================================================
+
+This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income.
+
+```{r}
+radioButtons(inputId = "MS_input", 
+             label = h2("Select Marital Status"),
+           choices = maritalstatus_sex,
+             inline = TRUE,
+             selected = "Widowed")
+           
+```
+
+Main Tab 1
+=======================================================================
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p1 <- df %>% 
+    filter(marital.status==input$MS_input) %>% 
+    ggplot(aes(x=age, color=sex))+
+    geom_density()
+  ggplotly(p1)
+})
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Bar Plot
+
+```{r}
+renderPlotly({
+  p2 <- df %>% 
+    filter(marital.status==input$MS_input) %>% 
+    ggplot(aes(x=education, fill=workclass))+
+    geom_bar()
+  ggplotly(p2)
+})
+```

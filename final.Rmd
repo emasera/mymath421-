@@ -119,6 +119,8 @@ Write a shiny flex dashboard that uses `radioButtons` and works with a dataset d
 
 Include the link of your dashboard here.
 
+[Question7](https://emasera.shinyapps.io/Question_7/), [Rmd](final.Rmd)
+
 ------------------------------------------------------------------------
 
 **Notice: You can only run maximum 5 apps on shinyapps.io. If you are running out of apps, you are recommended to create another shiny account and use multiple accounts.**
