@@ -29,6 +29,9 @@
 - [Assignment 7 Extra Credit](assignment7_extra_credits.html)
 - [Assignment 9 Extra Credit](assignment9_extra_credits.html)
 
+### Data
+- [BasketballSalary](nba_salary2.csv)
+
 ### Final
 - [Question1](Question_1.html)
 - [Question2](Question_2.html)
