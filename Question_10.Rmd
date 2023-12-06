@@ -61,6 +61,11 @@ sliderInput(inputId = "PER_input",
             min = min(df$PER, na.rm=TRUE),
             max = max(df$PER, na.rm=TRUE),
             value= c(-41.1, 134.1))
+checkboxGroupInput(inputId = "Team_input", 
+                   label = h3("Team"),
+                   choices = unique(df$Tm), 
+                   inline = TRUE,
+                   selected = 'HOU')
 ```
 
 Main Tab 1
@@ -97,6 +102,7 @@ renderPlotly({
      filter(G>input$games_input[1], G<input$games_input[2]) %>% 
     filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
     filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    filter(Tm %in% input$Team_input) %>% 
     ggplot(aes(x=Salary, color=Tm))+
     geom_density()
   ggplotly(p4)
@@ -121,6 +127,7 @@ renderPlotly({
      filter(G>input$games_input[1], G<input$games_input[2]) %>% 
     filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
     filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    filter(Tm %in% input$Team_input) %>%
     ggplot(aes(x=FTr, color=Tm))+
     geom_density()
   ggplotly(p5)
@@ -139,6 +146,7 @@ renderPlotly({
      filter(G>input$games_input[1], G<input$games_input[2]) %>% 
     filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
     filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    filter(Tm %in% input$Team_input) %>%
     ggplot(aes(x=`ORB%`, color=Tm))+
     geom_density()
   ggplotly(p6)
@@ -174,6 +182,7 @@ renderPlotly({
      filter(G>input$games_input[1], G<input$games_input[2]) %>% 
     filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
     filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    filter(Tm %in% input$Team_input) %>%
     ggplot(aes(x=`AST%`, color=Tm))+
     geom_density()
   ggplotly(p5)
@@ -192,6 +201,7 @@ renderPlotly({
      filter(G>input$games_input[1], G<input$games_input[2]) %>% 
     filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
     filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    filter(Tm %in% input$Team_input) %>%
     ggplot(aes(x=`DRB%`, color=Tm))+
     geom_density()
   ggplotly(p6)
@@ -203,7 +213,7 @@ Column {data-width=500}
 
 ### What are these plots showing?
 
-My goal for this project was to take some of the quantitative variables from the dataset and have them all be compared against what team the player was on. I used Age, draft number, games played, minutes played and per minute performance as the inputs that did not change throughout my density plots. Then, I had all of the graphs fill by the team they are on and for these two graphs had it show by Assist Percentage and Defensive Rebound Percentage.  
+My goal for this project was to take some of the quantitative variables from the dataset and have them all be compared against what team the player was on. I used Age, draft number, games played, minutes played per minute performance and team as the inputs that did not change throughout my density plots. Then, I had all of the graphs fill by the team they are on and for these two graphs had it show by Assist Percentage and Defensive Rebound Percentage.  
 
 ### Basketball Image
 
