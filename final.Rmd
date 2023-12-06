@@ -181,6 +181,8 @@ Write a dashboard that
 
 Include the link of your dashboard here.
 
+[Question10](https://emasera1.shinyapps.io/Question_10/#section-main-tab-1), [Rmd](final.Rmd)
+
 ------------------------------------------------------------------------
 
 ### Question 11 - Presentation

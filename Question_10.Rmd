@@ -23,37 +23,66 @@ library(lubridate)
 library(rsconnect)
 library(shiny)
 library(packrat)
-df <- read_csv('https://github.com/bryantstats/math460/blob/main/data/nba_salary2.csv')
+df <- read_csv('https://emasera.github.io/mymath421-/nba_salary2.csv')
+
+Basketball_Team <- unique(df$Tm)
 
 ```
 
 {.sidebar}
 =======================================================================
 
-This data set includes 15 variables with 32,561 observations. Variables include but are not limited to sex, marital status, race and income.
-
+This data set includes 28 variables with 485 observations. Variables include but are not limited to age, NBA country, salary and player.
+If after selecting the 5 inputs, no data is available for graphs, change inputs because that means there is no player with those statistics. 
 
 ```{r}
-sliderInput(inputId = "fare_input",
-            label = h3("Fare Range"),
-            min = min(df$Fare, na.rm=TRUE),
-            max = max(df$Fare, na.rm=TRUE),
-            value= c(50, 200))
-
-selectInput(inputId = "sex_input", 
-            label = h3("Gender"),
-            choices = titanic_sex, 
-            selected = 'male')
-
-checkboxGroupInput(inputId = "embarked_input", 
-                   label = h3("Embarked Location"),
-                   choices = unique(df$Embarked), 
-                   inline = TRUE,
-                   selected = 'S')
+sliderInput(inputId = "age_input",
+            label = h3("Age Range"),
+            min = min(df$Age, na.rm=TRUE),
+            max = max(df$Age, na.rm=TRUE),
+            value= c(19, 41))
+sliderInput(inputId = "draft_input",
+            label = h3("NBA Draft Number Range"),
+            min = min(df$NBA_DraftNumber, na.rm=TRUE),
+            max = max(df$NBA_DraftNumber, na.rm=TRUE),
+            value= c(1, 62))
+sliderInput(inputId = "games_input",
+            label = h3("Games Range"),
+            min = min(df$G, na.rm=TRUE),
+            max = max(df$G, na.rm=TRUE),
+            value= c(1, 79))
+sliderInput(inputId = "MP_input",
+            label = h3("Minutes Played Range"),
+            min = min(df$MP, na.rm=TRUE),
+            max = max(df$MP, na.rm=TRUE),
+            value= c(1, 2898))
+sliderInput(inputId = "PER_input",
+            label = h3("Per minute performance Range"),
+            min = min(df$PER, na.rm=TRUE),
+            max = max(df$PER, na.rm=TRUE),
+            value= c(-41.1, 134.1))
 ```
 
 Main Tab 1
 =======================================================================
+
+Column {data-width=500, .tabset}
+-----------------------------------------------------------------------
+
+### Column Tab 1
+
+```{r}
+df
+```
+
+
+### Column Tab 2
+
+```{r}
+datatable(df, options = list(
+  pageLength = 25
+))
+```
 
 Column {data-width=500}
 -----------------------------------------------------------------------
@@ -62,32 +91,18 @@ Column {data-width=500}
 
 ```{r}
 renderPlotly({
-  p1 <- df %>% 
-    filter(Fare>input$fare_input[1], Fare<input$fare_input[2]) %>% 
-    filter(Sex==input$sex_input) %>% 
-    filter(Embarked %in% input$embarked_input) %>% 
-    ggplot(aes(x=Age, color=Survived))+
+  p4 <- df %>% 
+     filter(Age>input$age_input[1], Age<input$age_input[2]) %>% 
+     filter(NBA_DraftNumber>input$draft_input[1], NBA_DraftNumber<input$draft_input[2]) %>% 
+     filter(G>input$games_input[1], G<input$games_input[2]) %>% 
+    filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
+    filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    ggplot(aes(x=Salary, color=Tm))+
     geom_density()
-  ggplotly(p1)
+  ggplotly(p4)
 })
 ```
 
-Column {data-width=500}
------------------------------------------------------------------------
-
-### Bar Plot
-
-```{r}
-renderPlotly({
-  p2 <- df %>% 
-    filter(Fare>input$fare_input[1], Fare<input$fare_input[2]) %>% 
-    filter(Sex==input$sex_input) %>% 
-    filter(Embarked %in% input$embarked_input) %>%  
-    ggplot(aes(x=Pclass, fill=Survived))+
-    geom_bar()
-  ggplotly(p2)
-})
-```
 
 
 Main Tab 2
@@ -100,26 +115,46 @@ Column {data-width=500}
 
 ```{r}
 renderPlotly({
-  p1 <- df %>% 
-    filter(Fare>input$fare_input[1], Fare<input$fare_input[2]) %>% 
-    filter(Sex==input$sex_input) %>% 
-    filter(Embarked %in% input$embarked_input) %>% 
-    ggplot(aes(x=Age, color=Survived))+
+  p5 <- df %>% 
+     filter(Age>input$age_input[1], Age<input$age_input[2]) %>% 
+     filter(NBA_DraftNumber>input$draft_input[1], NBA_DraftNumber<input$draft_input[2]) %>% 
+     filter(G>input$games_input[1], G<input$games_input[2]) %>% 
+    filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
+    filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    ggplot(aes(x=FTr, color=Tm))+
     geom_density()
-  ggplotly(p1)
+  ggplotly(p5)
+})
+```
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p6 <- df %>% 
+     filter(Age>input$age_input[1], Age<input$age_input[2]) %>% 
+     filter(NBA_DraftNumber>input$draft_input[1], NBA_DraftNumber<input$draft_input[2]) %>% 
+     filter(G>input$games_input[1], G<input$games_input[2]) %>% 
+    filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
+    filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    ggplot(aes(x=`ORB%`, color=Tm))+
+    geom_density()
+  ggplotly(p6)
 })
 ```
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### What is Density Plot?
+### What are these plots showing?
 
-- A density plot is an alternative to Histogram used for visualizing the distribution of a continuous variable. The peaks of a Density Plot help to identify where values are concentrated over the interval of the continuous variable. Compared to Histograms, Density Plots are better at finding the distribution shape because they are re not affected by the number of bins used (each bar used in a typical histogram).
+My goal for this project was to take some of the quantitative variables from the dataset and have them all be compared against what team the player was on. I used Age, draft number, games played, minutes played and per minute performance as the inputs that did not change throughout my density plots. Then, I had all of the graphs fill by the team they are on and for these two graphs had it show by Free Throw Rate and Offensive Rebound Percentage. 
 
-- For example, a Histogram with only 4 bins wouldn’t produce a distinguishable enough shape of distribution as a 30-bin Histogram would. However, with Density Plots, this isn’t an issue.
+### Basketball Image
 
-![](https://datavizcatalogue.com/methods/images/top_images/SVG/density_plot.svg)
+![](basketball1.png){width="10%"}
 
 
 
@@ -129,31 +164,47 @@ Main Tab 3
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Bar Plot
+### Density Plot
 
 ```{r}
 renderPlotly({
-  p2 <- df %>% 
-    filter(Fare>input$fare_input[1], Fare<input$fare_input[2]) %>% 
-    filter(Sex==input$sex_input) %>% 
-    filter(Embarked %in% input$embarked_input) %>%  
-    ggplot(aes(x=Pclass, fill=Survived))+
-    geom_bar()
-  ggplotly(p2)
+  p5 <- df %>% 
+     filter(Age>input$age_input[1], Age<input$age_input[2]) %>% 
+     filter(NBA_DraftNumber>input$draft_input[1], NBA_DraftNumber<input$draft_input[2]) %>% 
+     filter(G>input$games_input[1], G<input$games_input[2]) %>% 
+    filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
+    filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    ggplot(aes(x=`AST%`, color=Tm))+
+    geom_density()
+  ggplotly(p5)
+})
+```
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Density Plot
+
+```{r}
+renderPlotly({
+  p6 <- df %>% 
+     filter(Age>input$age_input[1], Age<input$age_input[2]) %>% 
+     filter(NBA_DraftNumber>input$draft_input[1], NBA_DraftNumber<input$draft_input[2]) %>% 
+     filter(G>input$games_input[1], G<input$games_input[2]) %>% 
+    filter(MP>input$MP_input[1], MP<input$MP_input[2]) %>% 
+    filter(PER>input$PER_input[1], PER<input$PER_input[2]) %>% 
+    ggplot(aes(x=`DRB%`, color=Tm))+
+    geom_density()
+  ggplotly(p6)
 })
 ```
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### What is Bar Chart?
+### What are these plots showing?
 
-- There are two types of bar charts: geom_bar() and geom_col(). geom_bar() makes the height of the bar proportional to the number of cases in each group (or if the weight aesthetic is supplied, the sum of the weights). 
+My goal for this project was to take some of the quantitative variables from the dataset and have them all be compared against what team the player was on. I used Age, draft number, games played, minutes played and per minute performance as the inputs that did not change throughout my density plots. Then, I had all of the graphs fill by the team they are on and for these two graphs had it show by Assist Percentage and Defensive Rebound Percentage.  
 
-- If you want the heights of the bars to represent values in the data, use geom_col() instead. geom_bar() uses stat_count() by default: it counts the number of cases at each x position. geom_col() uses stat_identity(): it leaves the data as is.
+### Basketball Image
 
-```{r}
-image_url <- "https://s3-us-west-2.amazonaws.com/scorestream-team-profile-pictures/274145/20181010232546_702_mascot300.png"
-```
-<center><img src="`r image_url`"></center>
-
+![](basketball2.png){width="10%"}
